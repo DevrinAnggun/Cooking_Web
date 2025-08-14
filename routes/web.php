@@ -152,3 +152,4 @@ Route::get('/resep/{id}', function ($id) use ($recipes) {
     return view('detail', ['recipe' => $recipe]);
 });
 
+

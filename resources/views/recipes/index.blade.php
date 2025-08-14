@@ -35,11 +35,12 @@
 <body>
 
     <!-- Header -->
-    <div class="header">
-        <img src="{{ asset('images/cook.png') }}" alt="Header" class="img-fluid mb-3" style="max-height: 80px; border-radius: 10px;">
-        <h1 class="display-4 fw-bold">Selamat Datang di Recipes!</h1>
-        <p class="lead">Temukan inspirasi masakan lezat setiap hari</p>
-    </div>
+<div class="header text-center" style="background-color: #FFA500; width: 100%; padding: 10px 20px; border-radius: 0;">
+    <img src="{{ asset('images/cook.png') }}" alt="Header" class="img-fluid mb-2" style="max-height: 60px; border-radius: 10px;">
+    <h1 class="display-6 fw-bold" style="margin-bottom: 5px;">Selamat Datang di Dapur Ulala!</h1>
+    <p class="lead" style="margin-bottom: 0;">Temukan inspirasi masakan lezat setiap hari</p>
+</div>
+
 
     <!-- Kata Pengantar -->
     <div class="intro">
@@ -52,26 +53,34 @@
 
     <div class="container py-5">
 
-        <!-- Contoh Masakan -->
-        <h2 class="text-center section-title">Contoh Masakan Populer</h2>
-        <div class="row mb-5">
+        <!-- Masakan Populer -->
+        <h2 class="text-center section-title">Masakan Populer</h2>
+            <div class="row mb-5">
             @foreach(array_slice($recipes, 0, 3) as $recipe)
-                <div class="col-md-4 mb-4">
-                    <div class="card shadow-sm">
-                        <img src="{{ asset('images/' . $recipe['image']) }}" class="card-img-top" alt="{{ $recipe['title'] }}">
-                        <div class="card-body text-center">
-                            <h5 class="card-title">{{ $recipe['title'] }}</h5>
-                        </div>
-                    </div>
+            <div class="col-md-4 mb-4">
+            <div class="card shadow-sm" style="background-color: orange; border: none;">
+        <img src="{{ asset('images/' . $recipe['image']) }}" class="card-img-top" alt="{{ $recipe['title'] }}">
+                <div class="card-body text-center">
+                    <h5 class="card-title">{{ $recipe['title'] }}</h5>
                 </div>
-            @endforeach
+            </div>
         </div>
+    @endforeach
+</div>
 
-        <!-- Pencarian -->
-        <h2 class="text-center section-title">Cari Resep Masakan</h2>
-        <form method="GET" action="/" class="search-bar">
-            <input type="text" name="search" class="form-control" placeholder="Masukkan nama resep...">
-        </form>
+
+       <!-- Pencarian -->
+<h2 class="text-center section-title">Cari Resep Masakan</h2>
+<form method="GET" action="/" class="search-bar d-flex" style="max-width: 400px; margin: 0 auto;">
+    <input type="text" name="search" class="form-control me-2" placeholder="Masukkan nama resep...">
+    <button type="submit" class="btn btn-warning">
+        <i class="fa fa-search"></i>
+    </button>
+</form>
+
+<!-- Tambahkan Font Awesome di <head> kalau belum ada -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
 
         <!-- Semua Resep -->
         <div class="row mt-4">
@@ -82,7 +91,8 @@
                         <div class="card-body">
                             <h5 class="card-title">{{ $recipe['title'] }}</h5>
                             <p class="card-text">{{ $recipe['description'] }}</p>
-                            <a href="{{ url('/resep/' . $recipe['id']) }}" class="btn btn-success w-100">Lihat Resep</a>
+                            <a href="{{ url('/resep/' . $recipe['id']) }}" class="btn w-100" style="background-color: orange; border-color: orange; color: white;">
+                            Lihat Resep</a>
                         </div>
                     </div>
                 </div>
