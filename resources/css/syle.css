@@ -1,0 +1,29 @@
+.header {
+    background: linear-gradient(135deg, #ff7f50, #ffb347);
+    color: white;
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.intro {
+    padding: 40px 20px;
+    background-color: #fef8f0;
+    text-align: center;
+}
+
+.section-title {
+    color: #2e7d32;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+
+.card img {
+    height: 200px;
+    object-fit: cover;
+}
+
+.search-bar {
+    max-width: 400px;
+    margin: 0 auto 30px auto;
+}
+
