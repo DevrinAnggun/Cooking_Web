@@ -135,6 +135,131 @@ $recipes = [
             'Tata mie di mangkuk, beri ayam berbumbu dan sayur.',
             'Siram dengan kuah kaldu, sajikan hangat.'
         ]
+    ],
+    [
+        'id' => 5,
+        'title' => 'Cah Kangkung',
+        'description' => 'Kangkung tumis sederhana dengan bawang putih dan cabai.',
+        'image' => 'kangkung.jpg',
+        'tools' => [
+            'Wajan',
+            'Spatula',
+            'Pisau',
+            'Talenan'
+        ],
+        'ingredients' => [
+            '2 ikat kangkung, petik daunnya',
+            '3 siung bawang putih, cincang',
+            '3 buah cabai merah, iris serong',
+            '1 sdm saus tiram',
+            '1/2 sdt garam',
+            '1/2 sdt gula pasir',
+            'Minyak goreng secukupnya'
+        ],
+        'steps' => [
+            'Panaskan minyak di wajan.',
+            'Tumis bawang putih dan cabai hingga harum.',
+            'Masukkan kangkung, aduk cepat.',
+            'Tambahkan saus tiram, garam, dan gula.',
+            'Aduk rata sebentar hingga kangkung layu.',
+            'Angkat dan sajikan segera.'
+        ]
+    ],
+    [
+        'id' => 6,
+        'title' => 'Ayam Goreng Serundeng',
+        'description' => 'Ayam goreng gurih dengan taburan kelapa sangrai berbumbu.',
+        'image' => 'serundeng.jpg',
+        'tools' => [
+            'Wajan',
+            'Panci',
+            'Pisau',
+            'Talenan',
+            'Saringan minyak'
+        ],
+        'ingredients' => [
+            '1 ekor ayam, potong menjadi 8 bagian',
+            '200 gram kelapa parut',
+            '4 siung bawang putih',
+            '6 butir bawang merah',
+            '3 lembar daun salam',
+            '2 batang serai, memarkan',
+            '1 sdm ketumbar bubuk',
+            'Garam secukupnya',
+            'Minyak goreng secukupnya'
+        ],
+        'steps' => [
+            'Haluskan bawang putih, bawang merah, ketumbar, dan garam.',
+            'Rebus ayam dengan bumbu halus, daun salam, dan serai hingga empuk.',
+            'Masukkan kelapa parut, masak hingga kelapa kering dan ayam meresap bumbu.',
+            'Panaskan minyak, goreng ayam hingga kecokelatan.',
+            'Goreng juga kelapa parut hingga kering menjadi serundeng.',
+            'Sajikan ayam goreng dengan taburan serundeng.'
+        ]
+    ],
+    [
+        'id' => 7,
+        'title' => 'Oseng Jamur Tiram',
+        'description' => 'Jamur tiram tumis gurih pedas.',
+        'image' => 'jamur.jpg',
+        'tools' => [
+            'Wajan',
+            'Spatula',
+            'Pisau',
+            'Talenan'
+        ],
+        'ingredients' => [
+            '200 gram jamur tiram, suwir kasar',
+            '3 siung bawang putih, cincang',
+            '5 butir bawang merah, iris tipis',
+            '3 buah cabai merah, iris serong',
+            '2 sdm kecap manis',
+            '1/2 sdt garam',
+            '1/2 sdt gula pasir',
+            'Minyak goreng secukupnya'
+        ],
+        'steps' => [
+            'Panaskan minyak di wajan.',
+            'Tumis bawang merah dan bawang putih hingga harum.',
+            'Masukkan cabai merah, aduk sebentar.',
+            'Tambahkan jamur tiram, aduk rata.',
+            'Beri kecap manis, garam, dan gula.',
+            'Masak hingga jamur layu dan bumbu meresap.',
+            'Angkat dan sajikan hangat.'
+        ]
+    ],
+    [
+        'id' => 8,
+        'title' => 'Martabak Telur',
+        'description' => 'Martabak telur gurih isi daging cincang dan bawang.',
+        'image' => 'marlur.jpg',
+        'tools' => [
+            'Wajan datar',
+            'Spatula',
+            'Mangkuk',
+            'Pisau',
+            'Talenan'
+        ],
+        'ingredients' => [
+            '200 gram daging sapi cincang',
+            '4 butir telur',
+            '5 batang daun bawang, iris halus',
+            '2 siung bawang putih, cincang',
+            '1 buah bawang bombay kecil, cincang',
+            '1/2 sdt garam',
+            '1/2 sdt merica bubuk',
+            'Kulit lumpia atau kulit martabak secukupnya',
+            'Minyak goreng untuk menggoreng'
+        ],
+        'steps' => [
+            'Panaskan sedikit minyak, tumis bawang putih dan bawang bombay hingga harum.',
+            'Masukkan daging cincang, masak hingga matang. Angkat dan dinginkan.',
+            'Kocok telur dalam mangkuk, masukkan daun bawang, garam, merica, dan daging cincang yang sudah matang.',
+            'Panaskan wajan datar dengan sedikit minyak.',
+            'Ambil satu lembar kulit lumpia, isi dengan adonan telur dan daging, lipat membentuk persegi.',
+            'Goreng martabak dengan api sedang hingga kedua sisi kecokelatan.',
+            'Angkat, tiriskan, dan sajikan hangat dengan acar atau cabai rawit.'
+        ]
     ]
 ];
 
@@ -151,5 +276,3 @@ Route::get('/resep/{id}', function ($id) use ($recipes) {
 
     return view('detail', ['recipe' => $recipe]);
 });
-
-

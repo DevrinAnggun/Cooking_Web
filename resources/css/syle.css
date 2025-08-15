@@ -27,3 +27,11 @@
     margin: 0 auto 30px auto;
 }
 
+.card-img-top {
+    height: 200px; /* tinggi konsisten */
+    object-fit: cover; /* gambar terpotong rapi */
+}
+
+.search-bar {
+    margin-bottom: 2rem; /* jarak 32px ke bawah */
+}

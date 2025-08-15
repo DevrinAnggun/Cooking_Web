@@ -69,9 +69,9 @@
 </div>
 
 
-       <!-- Pencarian -->
+<!-- Pencarian -->
 <h2 class="text-center section-title">Cari Resep Masakan</h2>
-<form method="GET" action="/" class="search-bar d-flex" style="max-width: 400px; margin: 0 auto;">
+<form method="GET" action="/" class="search-bar d-flex mb-5" style="max-width: 400px; margin: 0 auto;">
     <input type="text" name="search" class="form-control me-2" placeholder="Masukkan nama resep...">
     <button type="submit" class="btn btn-warning">
         <i class="fa fa-search"></i>
@@ -82,23 +82,22 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
 
-        <!-- Semua Resep -->
-        <div class="row mt-4">
-            @foreach($recipes as $recipe)
-                <div class="col-md-3 mb-4">
-                    <div class="card shadow-sm h-100">
-                        <img src="{{ asset('images/' . $recipe['image']) }}" class="card-img-top" alt="{{ $recipe['title'] }}">
-                        <div class="card-body">
-                            <h5 class="card-title">{{ $recipe['title'] }}</h5>
-                            <p class="card-text">{{ $recipe['description'] }}</p>
-                            <a href="{{ url('/resep/' . $recipe['id']) }}" class="btn w-100" style="background-color: orange; border-color: orange; color: white;">
-                            Lihat Resep</a>
-                        </div>
+        <div class="row row-cols-1 row-cols-md-4 g-4">
+    <?php foreach ($recipes as $recipe): ?>
+        <div class="col">
+            <div class="card h-100 d-flex flex-column">
+                <img src="images/<?= $recipe['image']; ?>" class="card-img-top" alt="<?= $recipe['title']; ?>">
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title"><?= $recipe['title']; ?></h5>
+                    <p class="card-text"><?= $recipe['description']; ?></p>
+                    <div class="mt-auto">
+                        <a href="resep.php?id=<?= $recipe['id']; ?>" class="btn btn-warning w-100">Lihat Resep</a>
                     </div>
                 </div>
-            @endforeach
+            </div>
         </div>
-    </div>
+    <?php endforeach; ?>
+</div>
 
 </body>
 </html>
