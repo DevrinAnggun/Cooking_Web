@@ -1,9 +1,14 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\RecipeController;
+namespace App\Http\Controllers;
 
-$recipes = [
+use Illuminate\Http\Request;
+use App\Models\Recipe;
+
+class RecipeController extends Controller
+{
+
+    private $recipes = [
     [
         'id' => 1,
         'title' => 'Nasi Goreng Spesial',
@@ -264,33 +269,39 @@ $recipes = [
     ]
 ];
 
-Route::get('/', function () use ($recipes) {
-    return view('recipes.index', ['recipes' => $recipes]);
-});
+    public function show($id)
+    {
+        $recipe = collect($this->recipes)->firstWhere('id', $id);
 
-Route::get('/resep/{id}', function ($id) use ($recipes) {
-    $recipe = collect($recipes)->firstWhere('id', $id);
+        if (!$recipe) {
+            abort(404);
+        }
 
-    if (!$recipe) {
-        abort(404);
+        return view('detail', ['recipe' => $recipe]);
     }
+}
 
-    return view('detail', ['recipe' => $recipe]);
-});
+{
+    $keyword = $request->input('query');
 
-Route::get('/resep/{id}', [RecipeController::class, 'show'])->name('resep.show');
+    // Cari resep berdasarkan nama
+    $recipes = \App\Models\Recipe::where('name', 'like', "%$keyword%")->get();
 
-Route::get('/resep/{id}', function ($id) use ($recipes) {
-    $recipe = collect($recipes)->firstWhere('id', $id);
+    return view('recipes.search', compact('recipes', 'keyword'));
+}
 
-    if (!$recipe) {
-        abort(404);
+{
+        $query = $request->input('query');
+
+        $recipes = Recipe::where('name', 'LIKE', "%$query%")->get();
+
+        if ($recipes->isEmpty()) {
+            return view('recipes.search', [
+                'recipes' => $recipes,
+                'query'   => $query,
+                'message' => "Resep '$query' tidak ditemukan."
+            ]);
+        }
+
+        return view('recipes.search', compact('recipes', 'query'));
     }
-
-    return view('detail', ['recipe' => $recipe]);
-})->name('resep.detail');
-
-Route::get('/search', [RecipeController::class, 'search'])->name('recipes.search');
-
-Route::get('/search', [RecipeController::class, 'search'])->name('search');
-

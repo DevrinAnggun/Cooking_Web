@@ -70,13 +70,29 @@
 
 
 <!-- Pencarian -->
-<h2 class="text-center section-title">Cari Resep Masakan</h2>
-<form method="GET" action="/" class="search-bar d-flex mb-5" style="max-width: 400px; margin: 0 auto;">
-    <input type="text" name="search" class="form-control me-2" placeholder="Masukkan nama resep...">
-    <button type="submit" class="btn btn-warning">
-        <i class="fa fa-search"></i>
+<h2 class="text-success text-center">Cari Resep Masakan</h2>
+<form action="{{ route('search') }}" method="GET" class="d-flex justify-content-center mt-3">
+    <input type="text" name="q" class="form-control w-50" placeholder="Masukkan nama resep...">
+    <button type="submit" class="btn btn-warning ms-2">
+        <i class="fas fa-search"></i>
     </button>
 </form>
+
+<h2 class="text-xl font-bold mb-4">
+    Hasil Pencarian: "{{ $query ?? '' }}"
+</h2>
+
+@if(empty($recipes))
+    <p class="text-red-500">Resep tidak ditemukan.</p>
+@else
+    @foreach($recipes as $recipe)
+        <div class="border p-4 rounded mb-2">
+            <h3 class="font-bold">{{ $recipe['title'] }}</h3>
+            <p>{{ $recipe['description'] }}</p>
+        </div>
+    @endforeach
+@endif
+
 
 <!-- Tambahkan Font Awesome di <head> kalau belum ada -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -91,7 +107,7 @@
                     <h5 class="card-title"><?= $recipe['title']; ?></h5>
                     <p class="card-text"><?= $recipe['description']; ?></p>
                     <div class="mt-auto">
-                        <a href="resep.php?id=<?= $recipe['id']; ?>" class="btn btn-warning w-100">Lihat Resep</a>
+                        <a href="{{ route('resep.show', $recipe['id']) }}" class="btn btn-warning w-100">Lihat Resep</a>
                     </div>
                 </div>
             </div>
