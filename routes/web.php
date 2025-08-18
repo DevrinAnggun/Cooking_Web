@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\RecipeController;
 
 $recipes = [
     [
@@ -290,7 +289,4 @@ Route::get('/resep/{id}', function ($id) use ($recipes) {
     return view('detail', ['recipe' => $recipe]);
 })->name('resep.detail');
 
-Route::get('/search', [RecipeController::class, 'search'])->name('recipes.search');
-
-Route::get('/search', [RecipeController::class, 'search'])->name('search');
-
+Route::get('/resep/{id}', [RecipeController::class, 'show'])->name('resep.show');
